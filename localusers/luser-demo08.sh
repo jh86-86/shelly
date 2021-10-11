@@ -30,3 +30,23 @@ echo
 echo "Contents of ${FILE}"
 cat "${FILE}"
 
+#redirect STDIN to a program using FD 0
+echo LINE <0 {FILE}
+echo
+echo "Line contains: ${LINE}"
+
+#redirect STDOUT to a file using FD 1, overwriting the file
+head -n3 /etc/passwd 1> ${FILE}
+echo
+echo "Contents of ${FILE}:"
+cat ${FILE}
+
+#redirect STDERR to a file using FD 2
+ERR_FILE="/tmp/data.err"
+head -n3 /etc/passwd/fakefile 2> ${ERR_FILE}
+
+#redirect STDOUT and STERR to a file
+head -n3 /etc/passwd/fakefile &> ${FILE}
+echo 
+echo "Contents of ${FILE}:"
+cat ${FILE}
