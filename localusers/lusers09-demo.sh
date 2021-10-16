@@ -22,7 +22,7 @@ case "${1}" in
  stop)
     echo 'stopping'
     ;;
- status)
+ status|state)
     echo 'Status'
     ;;
  *)
@@ -30,3 +30,4 @@ case "${1}" in
     exit 1
     ;;
 esac
+ 
